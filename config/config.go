@@ -20,8 +20,10 @@ type GitHubURLs struct {
 
 // Repo represents any kind of repo (github, gitlab, etc)
 type Repo struct {
+	Type  string `yaml:",omitempty"`
 	Owner string `yaml:",omitempty"`
 	Name  string `yaml:",omitempty"`
+	Host  string `yaml:",omitempty"`
 }
 
 // String of the repo, e.g. owner/name
@@ -111,7 +113,7 @@ type Archive struct {
 
 // Release config used for the GitHub release
 type Release struct {
-	GitHub       Repo   `yaml:",omitempty"`
+	Provider     Repo   `yaml:"provider,omitempty"`
 	Draft        bool   `yaml:",omitempty"`
 	Prerelease   bool   `yaml:",omitempty"`
 	NameTemplate string `yaml:"name_template,omitempty"`
